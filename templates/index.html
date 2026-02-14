@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OTT Review Moderation</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            margin: 0;
+            padding: 0;
+            color: white;
+        }
+
+        .container {
+            width: 40%;
+            margin: 60px auto;
+            background: white;
+            color: black;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 8px 20px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            text-align: center;
+            color: #1e3c72;
+        }
+
+        textarea, input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            background: #1e3c72;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #16325c;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .safe { background-color: #d4edda; color: #155724; }
+        .toxic { background-color: #f8d7da; color: #721c24; }
+        .spoiler { background-color: #fff3cd; color: #856404; }
+        .spam { background-color: #d1ecf1; color: #0c5460; }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>🎬 OTT Review Analyzer</h2>
+
+    <form method="POST">
+        <label>Enter Review:</label>
+        <textarea name="review" rows="4" placeholder="Type your review here..."></textarea>
+
+        <label>Enter Age:</label>
+        <input type="number" name="age" placeholder="Enter your age">
+
+        <button type="submit">Analyze Review</button>
+    </form>
+
+    {% if result %}
+        <div class="result
+            {% if result == 'Safe' %}safe
+            {% elif result == 'Toxic' %}toxic
+            {% elif result == 'Spoiler' %}spoiler
+            {% elif result == 'Spam' %}spam
+            {% endif %}">
+
+            <h3>Category: {{ result }}</h3>
+            <h3>Status: {{ action }}</h3>
+        </div>
+    {% endif %}
+
+</div>
+
+<footer>
+    AI Powered Review Moderation & Parental Control System
+</footer>
+
+</body>
+</html>
