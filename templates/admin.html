@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(to right, #141e30, #243b55);
+            color: white;
+            margin: 0;
+            padding: 30px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            background: white;
+            color: black;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background: #1e3c72;
+            color: white;
+        }
+
+        tr:hover {
+            background: #f1f1f1;
+        }
+
+        .delete-btn {
+            padding: 6px 10px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            background: #c0392b;
+        }
+
+        .back-btn {
+            margin-top: 20px;
+            display: inline-block;
+            padding: 10px 15px;
+            background: #1e3c72;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>🔥 Admin Moderation Dashboard</h2>
+
+<div style="text-align:right; margin-bottom:10px;">
+    <a href="/logout" style="color:white; text-decoration:none; font-weight:bold;">
+        🔓 Logout
+    </a>
+</div>
+<table>
+    <tr>
+        <th>#</th>
+        <th>Review</th>
+        <th>Age</th>
+        <th>Labels</th>
+        <th>Status</th>
+        <th>Timestamp</th>
+        <th>Action</th>
+    </tr>
+
+    {% for review in reviews %}
+    <tr>
+        <td>{{ loop.index0 }}</td>
+        <td>{{ review.Review }}</td>
+        <td>{{ review.Age }}</td>
+        <td>{{ review.Labels }}</td>
+        <td>{{ review.Status }}</td>
+        <td>{{ review.Timestamp }}</td>
+        <td>
+            <a href="/delete/{{ loop.index0 }}">
+                <button class="delete-btn">Delete</button>
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<a href="/" class="back-btn">⬅ Back to Home</a>
+
+</body>
+</html>
