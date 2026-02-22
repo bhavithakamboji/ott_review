@@ -6,12 +6,13 @@ from datetime import datetime
 import os
 import numpy as np
 import csv
-# Load saved model
-import nltk
-nltk.download('stopwords')
-nltk.download('wordnet')
-model = joblib.load("model.pkl")
-vectorizer = joblib.load("vectorizer.pkl")
+
+
+if os.path.exists("model.pkl") and os.path.exists("vectorizer.pkl"):
+    model = joblib.load("model.pkl")
+    vectorizer = joblib.load("vectorizer.pkl")
+else:
+    print("Model files not found!")
 
 app = Flask(__name__)
 app.secret_key = "supersecretkey123"
