@@ -7,6 +7,9 @@ import os
 import numpy as np
 import csv
 # Load saved model
+import nltk
+nltk.download('stopwords')
+nltk.download('wordnet')
 model = joblib.load("model.pkl")
 vectorizer = joblib.load("vectorizer.pkl")
 
@@ -212,4 +215,4 @@ def logout():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000)
